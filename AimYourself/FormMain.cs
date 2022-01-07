@@ -23,10 +23,10 @@ namespace AimYourself {
         private void FormMain_Load(object sender, EventArgs e) {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
-            this.notifyIcon.BalloonTipIcon = ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
+            this.notifyIcon.Icon = SystemIcons.Application;
+            this.notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
             this.notifyIcon.BalloonTipText = "Aim Yourself minimized";
             this.notifyIcon.BalloonTipTitle = "Aim Yourself";
-            this.notifyIcon.Icon = Icon.FromHandle(this.Handle);
             this.notifyIcon.Text = "Aim Yourself";
 
             this.lengthUpDown.Value = Properties.Settings.Default.length;
@@ -175,10 +175,6 @@ namespace AimYourself {
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             notifyIcon.Visible = false;
-        }
-
-        private void selectScreenButton_Click(object sender, EventArgs e) {
-            formOverlay.GetClickedWindow();
         }
 
         private void lengthUpDown_ValueChanged(object sender, EventArgs e) {

@@ -2,9 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace AimYourself {
     public partial class FormOverlay : Form {
@@ -32,9 +29,6 @@ namespace AimYourself {
 
         private IntPtr newHandle;
 
-        protected Hook.WinEventDelegate WinEventDelegate;
-        static GCHandle GCSafetyHandle;
-
         private Graphics graphics;
         private Pen pen = new Pen(Properties.Settings.Default.color, 1), 
                     outlinePen = new Pen(Color.Black, 2),
@@ -49,9 +43,6 @@ namespace AimYourself {
         [DllImport("user32.dll", SetLastError = true)]
         static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
-        [DllImport("user32.dll", SetLastError = false)]
-        static extern IntPtr GetDeskTopWindow();
-
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
@@ -64,27 +55,7 @@ namespace AimYourself {
 
         [DllImport("user32.dll", ExactSpelling = true)]
         static extern IntPtr GetAncestor(IntPtr hwnd, int flags);
-
-        [DllImport("user32.dll")]
-        static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, UIntPtr dwExtraInfo);
-
-        [DllImport("user32.dll")]
-        static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
-
-        const uint MOUSEEVENTF_ABSOLUTE = 0x8000;
-        const uint MOUSEEVENTF_LeftDOWN = 0x0002;
-        const uint MOUSEEVENTF_LeftUP = 0x0004;
-        const uint MOUSEEVENTF_MIDDLEDOWN = 0x0020;
-        const uint MOUSEEVENTF_MIDDLEUP = 0x0040;
-        const uint MOUSEEVENTF_MOVE = 0x0001;
-        const uint MOUSEEVENTF_RightDOWN = 0x0008;
-        const uint MOUSEEVENTF_RightUP = 0x0010;
-        const uint MOUSEEVENTF_XDOWN = 0x0080;
-        const uint MOUSEEVENTF_XUP = 0x0100;
-        const uint MOUSEEVENTF_WHEEL = 0x0800;
-        const uint MOUSEEVENTF_HWHEEL = 0x01000;
         
-
 
         public FormOverlay() {
             InitializeComponent();
@@ -153,27 +124,15 @@ namespace AimYourself {
 
         public void SetDoubleBuffered(bool flag) {
             if (flag)
-                this.SetDoubleBuffered(true);
+                DoubleBuffered = true;
             else
-                this.SetDoubleBuffered(false);
-        }
-
-        private void ResetWindowSize(IntPtr handle) {
-            // get size of target window and set size
-            GetWindowRect(handle, out rect);
-            this.Size = new Size(rect.Right - rect.Left, rect.Bottom - rect.Top);
-            this.Top = rect.Top;
-            this.Left = rect.Left;
-            this.Refresh();
+                DoubleBuffered = false;
         }
 
         public void GetClickedWindow() {
             if (GetCursorPos(out clickedPoint)) {
                 IntPtr hWnd = WindowFromPoint(clickedPoint);
                 if (hWnd != IntPtr.Zero) {
-                    const int nChars = 256;
-                    StringBuilder sb = new StringBuilder(nChars);
-
                     newHandle = GetAncestor(hWnd, 3);
                     GetWindowRect(newHandle, out rect);
                     windowCenterPoint = new Point(rect.Left + (rect.Right - rect.Left) / 2, rect.Top + (rect.Bottom - rect.Top) / 2);

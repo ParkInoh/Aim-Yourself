@@ -41,7 +41,6 @@
             this.colorContainer = new System.Windows.Forms.Label();
             this.gapFlag = new System.Windows.Forms.CheckBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.selectScreenButton = new System.Windows.Forms.Button();
             this.lengthUpDown = new System.Windows.Forms.NumericUpDown();
             this.gapUpDown = new System.Windows.Forms.NumericUpDown();
             this.thicknessUpDown = new System.Windows.Forms.NumericUpDown();
@@ -193,16 +192,6 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
-            // selectScreenButton
-            // 
-            this.selectScreenButton.Location = new System.Drawing.Point(138, 90);
-            this.selectScreenButton.Name = "selectScreenButton";
-            this.selectScreenButton.Size = new System.Drawing.Size(73, 63);
-            this.selectScreenButton.TabIndex = 18;
-            this.selectScreenButton.Text = "Select Screen";
-            this.selectScreenButton.UseVisualStyleBackColor = true;
-            this.selectScreenButton.Click += new System.EventHandler(this.selectScreenButton_Click);
-            // 
             // lengthUpDown
             // 
             this.lengthUpDown.Location = new System.Drawing.Point(82, 9);
@@ -283,7 +272,6 @@
             this.Controls.Add(this.thicknessUpDown);
             this.Controls.Add(this.gapUpDown);
             this.Controls.Add(this.lengthUpDown);
-            this.Controls.Add(this.selectScreenButton);
             this.Controls.Add(this.gapFlag);
             this.Controls.Add(this.colorContainer);
             this.Controls.Add(this.selectColor);
@@ -318,7 +306,6 @@
         private System.Windows.Forms.Label colorContainer;
         private System.Windows.Forms.CheckBox gapFlag;
         private System.Windows.Forms.NotifyIcon notifyIcon;
-        private System.Windows.Forms.Button selectScreenButton;
         private System.Windows.Forms.NumericUpDown lengthUpDown;
         private System.Windows.Forms.NumericUpDown gapUpDown;
         private System.Windows.Forms.NumericUpDown thicknessUpDown;
