@@ -184,7 +184,7 @@ namespace AimYourself {
             this.Left = 0;
 
             // save center of window to windowCenterPoint
-            windowCenterPoint = new Point(1920 / 2, 1080 / 2);
+            windowCenterPoint = new Point(this.Size.Width / 2, this.Size.Height / 2);
 
 
         }
