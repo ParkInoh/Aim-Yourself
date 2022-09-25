@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="length" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">20</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="thickness" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="gap" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">8</Value>
     </Setting>
     <Setting Name="drawPointFlag" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="drawOutlineFlag" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="color" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Red</Value>
+      <Value Profile="(Default)">Lime</Value>
     </Setting>
     <Setting Name="doubleBuffered" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

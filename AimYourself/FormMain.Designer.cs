@@ -205,7 +205,7 @@
             this.lengthUpDown.TabIndex = 19;
             this.lengthUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.lengthUpDown.Value = new decimal(new int[] {
-            20,
+            15,
             0,
             0,
             0});
@@ -238,7 +238,7 @@
             this.thicknessUpDown.TabIndex = 21;
             this.thicknessUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.thicknessUpDown.Value = new decimal(new int[] {
-            2,
+            1,
             0,
             0,
             0});
